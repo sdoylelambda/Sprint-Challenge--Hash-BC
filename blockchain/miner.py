@@ -2,7 +2,7 @@ import hashlib
 import requests
 
 import sys
-
+import json
 from uuid import uuid4
 
 from timeit import default_timer as timer
@@ -25,6 +25,10 @@ def proof_of_work(last_proof):
     print("Searching for next proof")
     proof = 0
     #  TODO: Your code here
+    block_string = json.dumps(last_proof, sort_keys=True).encode()
+
+    while valid_proof(block_string, proof) is False:
+        proof += 1
 
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
@@ -40,7 +44,11 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    pass
+    print("last_hash", last_hash)
+    print("proof", proof)
+    guess = f'{last_hash}{proof}'.encode()
+    guess_hash = hashlib.sha256(guess).hexdigest()
+    return guess_hash[6:] == proof[:6]
 
 
 if __name__ == '__main__':
@@ -49,6 +57,7 @@ if __name__ == '__main__':
         node = sys.argv[1]
     else:
         node = "https://lambda-coin.herokuapp.com/api"
+        # node = "lambda-coin-test-1"
 
     coins_mined = 0
 
