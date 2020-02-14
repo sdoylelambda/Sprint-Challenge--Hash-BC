@@ -47,7 +47,9 @@ def valid_proof(last_hash, proof):
     print("last_hash", last_hash)
     print("proof", proof)
     guess = f'{last_hash}{proof}'.encode()
+    print("guess", guess)
     guess_hash = hashlib.sha256(guess).hexdigest()
+    print("guess_hash", guess_hash)
     return guess_hash[6:] == proof[:6]
 
 
