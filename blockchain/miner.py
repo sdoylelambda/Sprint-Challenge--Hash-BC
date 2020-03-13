@@ -51,11 +51,9 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    guess = f'{last_hash}{proof}'.encode()
-    guess_hash = hashlib.sha256(guess).hexdigest()
+    current_hash = hashlib.sha256(f'{proof}'.encode()).hexdigest()
 
-    return guess_hash[6:] == guess[6:]
-
+    return last_hash[-6:] == current_hash[:6]
 
 if __name__ == '__main__':
     # What node are we interacting with?

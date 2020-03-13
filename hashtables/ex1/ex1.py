@@ -56,7 +56,7 @@ entry for limit - weight. If it does, then we've found the two items whose weigh
             return (first, second)
 
         hash_table_insert(ht, wt, i)
-        breakpoint()
+        # breakpoint()
         print('ht:', ht)
 
     return None
