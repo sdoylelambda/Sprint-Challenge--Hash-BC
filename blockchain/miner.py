@@ -26,13 +26,14 @@ def proof_of_work(last_proof):
     print("Searching for next proof")
     proof = 0
     #  TODO: Your code here
-    block_string = json.dumps(last_proof, sort_keys=True)
+    last_hash = hashlib.sha256(f'{last_proof}'.encode()).hexdigest()
 
-    while valid_proof(block_string, proof) is False:
+    while valid_proof(last_hash, proof) is False:
         start
         proof += 1
+    else:
+        proof = 0
 
-    return proof
 
     # END OF MY CODE
 

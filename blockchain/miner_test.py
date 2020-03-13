@@ -26,13 +26,14 @@ def proof_of_work(last_proof):
     print("Searching for next proof")
     proof = 0
     #  TODO: Your code here
-    block_string = json.dumps(last_proof, sort_keys=True)
+    last_hash =hashlib.sha256(f'{last_proof}'.encode()).hexdigest()
 
-    while valid_proof(block_string, proof) is False:
+    while valid_proof(last_hash, proof) is False:
         start
         proof += 1
+    else:
+        proof = 0
 
-    return proof
 
     # END OF MY CODE
 
@@ -50,10 +51,9 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    guess = f'{last_hash}{proof}'.encode()
-    guess_hash = hashlib.sha256(guess).hexdigest()
+    current_hash = hashlib.sha256(f'{proof}'.encode()).hexdigest()
 
-    return guess_hash[6:] == guess[6:]
+    return last_hash[-6:] == current_hash[:6]
 
 
 if __name__ == '__main__':
@@ -66,8 +66,8 @@ if __name__ == '__main__':
     coins_mined = 0
 
     # Load or create ID
-    # f = "seandoyle"
-    id = "seandoyle"
+    # f = open("my_id.txt", "r")
+    id = "seand"
     print("ID is", id)
     # f.close()
 
