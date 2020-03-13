@@ -3,12 +3,7 @@ import requests
 
 import sys
 
-from uuid import uuid4
-
 from timeit import default_timer as timer
-
-import random
-import json
 
 
 def proof_of_work(last_proof):

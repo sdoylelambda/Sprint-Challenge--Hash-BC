@@ -7,7 +7,7 @@ class TestEx2(unittest.TestCase):
 
     def test_short_case(self):
         ticket_1 = Ticket("NONE", "PDX")
-        ticket_2 = Ticket("Pstore each weight in the input list as keys? DX", "DCA")
+        ticket_2 = Ticket("PDX", "DCA")
         ticket_3 = Ticket("DCA", "NONE")
 
         tickets = [ticket_1, ticket_2, ticket_3]
