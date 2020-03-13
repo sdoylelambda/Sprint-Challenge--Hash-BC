@@ -61,15 +61,15 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         node = sys.argv[1]
     else:
-        node = "https://lambda-coin.herokuapp.com/api"
+        node = "https://lambda-coin-test-1.herokuapp.com/api"
 
     coins_mined = 0
 
     # Load or create ID
-    f = open("my_id.txt", "r")
-    id = f.read()
+    # f = "seandoyle"
+    id = "seandoyle"
     print("ID is", id)
-    f.close()
+    # f.close()
 
     if id == 'NONAME\n':
         print("ERROR: You must change your name in `my_id.txt`!")
